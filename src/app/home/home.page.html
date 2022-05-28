@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar  color="dark">
     <ion-title>
-      Blank
+      Charada
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content [fullscreen]="true" color="dark">
+  <div class="conteudo">
+    <div class="d-flex justify-content-center mt-5">
+      <h1>E a charada é: </h1>
+    </div>
+    <div class="d-flex justify-content-center my-5 charada">
+      <ion-label *ngFor="let item of pergunta; let i = index">
+        {{item.pergunta}}
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-danger" (click)="pegarCharada()"><ion-icon name="refresh"></ion-icon></button>
+        </div>
+      </ion-label>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <button type="button" class="btn btn-primary" (click)="mostrarResposta()">Resposta</button>
+    </div>
+    <div class="d-flex justify-content-center resposta" *ngIf="!resultado">
+      <div *ngFor="let item of pergunta; let i = index">
+        {{item.resposta}}
+      </div>
+    </div>
   </div>
 </ion-content>

@@ -1,4 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+
+interface Charada {
+  id: number,
+  pergunta: string,
+  resposta: string
+}
 
 @Component({
   selector: 'app-home',
@@ -7,6 +14,27 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  pergunta: Charada[] = [];
+  resultado: boolean = true;
+  url: string = 'http://lucasreno.kinghost.net/charada';
+
+  constructor(
+    public http: HttpClient,
+  ) {
+    this.pegarCharada();
+  }
+
+  pegarCharada(){
+    this.http.get<Charada[]>(this.url).subscribe(
+      (resposta: Charada[]) => {
+        this.pergunta = resposta;
+      }
+    );
+    this.resultado = true;
+  }
+
+  mostrarResposta(){
+    this.resultado = false;
+  }
 
 }
