@@ -2,6 +2,9 @@
   <ion-toolbar  color="dark">
     <ion-title>
       Charada
+      <div class="reset">
+        <button type="button" class="btn btn-outline-danger" (click)="pegarCharada()"><ion-icon name="refresh"></ion-icon></button>
+      </div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,21 +14,18 @@
     <div class="d-flex justify-content-center mt-5">
       <h1>E a charada é: </h1>
     </div>
-    <div class="d-flex justify-content-center my-5 charada">
+    <div class="d-flex justify-content-center my-5 mx-5 charada">
       <ion-label *ngFor="let item of pergunta; let i = index">
         {{item.pergunta}}
-        <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-outline-danger" (click)="pegarCharada()"><ion-icon name="refresh"></ion-icon></button>
-        </div>
       </ion-label>
     </div>
     <div class="d-flex justify-content-center mb-5">
       <button type="button" class="btn btn-primary" (click)="mostrarResposta()">Resposta</button>
     </div>
-    <div class="d-flex justify-content-center resposta" *ngIf="!resultado">
-      <div *ngFor="let item of pergunta; let i = index">
+    <div class="d-flex justify-content-center my-5 resposta" *ngIf="!resultado">
+      <ion-label *ngFor="let item of pergunta; let i = index">
         {{item.resposta}}
-      </div>
+      </ion-label>
     </div>
   </div>
 </ion-content>
